@@ -39,6 +39,7 @@ public class Day2 {
                 continue;
             } 
 
+            // Brute force it by checking the list with each value removed
             List<Integer> valuesList = new ArrayList<>(Arrays.stream(values).boxed().toList());
             for (int i = 0; i < valuesList.size(); i++) {
                 List<Integer> modifiedValues = new ArrayList<>(valuesList);
