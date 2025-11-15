@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+/**
+ * https://adventofcode.com/2024/day/3#part2
+ */
 
 public class Day3 {
 
@@ -23,6 +26,9 @@ public class Day3 {
         lines = new DataLoader().getLinesFromFileResource(path);
     }
 
+    /**
+     * https://adventofcode.com/2024/day/3
+     */
     public Integer doPartOne() {
       
         List<String> commands = findCommands(String.join("", lines));
@@ -41,6 +47,9 @@ public class Day3 {
         return new Multiplication(Integer.valueOf(values[1]), Integer.valueOf(values[2]));
     }
 
+    /**
+     * https://adventofcode.com/2024/day/3#part2
+     */
     public Integer doPartTwo() {
 
        return -1; 
