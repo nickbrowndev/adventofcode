@@ -1,7 +1,5 @@
 package nb;
 
-import java.io.File;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -16,7 +14,7 @@ public class Day1 {
     private List<Integer> rights;
 
     public Day1(String path) {
-        lines = getLinesFromFileResource(path);
+        lines = new DataLoader().getLinesFromFileResource(path);
 
         lefts = new ArrayList<>(lines.size());
         rights = new ArrayList<>(lines.size());
@@ -58,22 +56,6 @@ public class Day1 {
         return similarity;
     }
 
-    private List<String> getLinesFromFileResource(String filePath) {
-
-        List<String> lines = null;
-
-        try {
-
-            ClassLoader classLoader = getClass().getClassLoader();
-            File file = new File(classLoader.getResource(filePath).getFile());
-            lines = Files.readAllLines(file.toPath());
-
-        } catch (Exception e) {
-            throw new RuntimeException("Failed", e);
-        }
-
-        return lines;
-    }
 }
 
 
