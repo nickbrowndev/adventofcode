@@ -52,7 +52,15 @@ public class Day3 {
      */
     public Integer doPartTwo() {
 
-       return -1; 
+        String text = String.join("", lines);
+        // remove everything between don't() and do()
+        text = text.replaceAll("don't\\(\\).*?((do\\(\\))|$)", "");
+        List<String> commands = findCommands(text);
+        //--commands.forEach(System.out::println);
+        List<Multiplication> mults = commands.stream().map(val -> parseCommand(val)).collect(Collectors.toList());
+
+        int total = mults.stream().mapToInt(v -> v.total()).sum();
+        return total;
     }
     
     private List<String> findCommands(String s) {
