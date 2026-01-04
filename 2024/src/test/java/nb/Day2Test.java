@@ -3,7 +3,6 @@ package nb;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class Day2Test {
@@ -36,7 +35,6 @@ public class Day2Test {
         System.out.println(result);
     }
 
-    @Disabled
     @Test
     public void shouldDoPart2Test() {
         Integer result = testDay.doPartTwo();

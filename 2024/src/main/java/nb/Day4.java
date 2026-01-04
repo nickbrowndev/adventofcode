@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 /**
  * https://adventofcode.com/2024/day/4
  * https://adventofcode.com/2024/day/4#part2
@@ -140,109 +141,6 @@ public class Day4 {
     }
 
     
-    private class Board {
-        private final char[][] board ;
-        private final int width;
-        private final int height;
-
-        public Board(List<? extends CharSequence> lines) {
-            if (lines.isEmpty()) {
-                throw new IllegalArgumentException("Empty list");
-            }
-
-            height = lines.size();
-            width = lines.get(0).length();
-            board = new char[lines.get(0).length()][lines.size()];
-
-            lines = lines.reversed();
-            //System.out.println("width " + width + " height " + height);
-            for (int y = 0; y < height ; y++) {
-                //System.out.println(y);
-                final CharSequence line = lines.get(y);
-
-                for (int x = 0; x < width ; x++) {
-                    //System.out.println("setting " + x + ", " + y + " to " + line.charAt(x));
-                    board[x][y] = line.charAt(x);
-                }
-            }
-        }
-
-        private Board(char[][] data) {
-            this.board = data;
-            this.height = data[0].length;
-            this.width = data.length;
-        }
-
-        public char charAt(int x, int y) {
-            if (x < 0 || x > width-1) {
-                throw new IllegalArgumentException("X out of range (0 - " + (width-1) + "): " + x);
-            }
-            if (y < 0 || y > height -1) {
-                throw new IllegalArgumentException("Y out of range (0 - " + (height-1) + "): " + y);
-            }
-
-            return board[x][y];
-        }
-
-        public char charAt(Point point) {
-            return charAt(point.x(), point.y());
-        }
-
-        public int getWidth() {
-            return this.width;
-        }
-
-        public int getHeight() {
-            return this.height;
-        }
-
-        public boolean inBounds(Point point) {
-            return point.x() >= 0 && point.x() < width && point.y() >= 0 && point.y() < height;
-        }
-
-        public Board subBoard(Point start, Point end) {
-            int width = end.x() - start.x();
-            int height = end.y() - start.y();
-
-            char[][] result = new char[width][height];
-
-            for (int x = 0; x < width; x++) { 
-                for (int y = 0; y < height; y++) {
-
-                    result[x][y] = this.charAt(new Point(start.x() + x, start.y() + y));
-                }
-            }
-
-            return new Board(result);
-        }
-    }
-
-    private record Point(int x,int y) {
-        public Point move(Direction direction) {
-            return new Point(this.x + direction.getX(), this.y + direction.getY());
-        }
-    }
-
-    private enum Direction {
-        N(0, 1), NE(1,1), E(1,0), SE(1,-1),S(-1,0),SW(-1,-1),W(-1,0),NW(-1,1);
-
-        private Direction(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        private final int x;
-        private final int y;
-
-        public int getX() {
-            return this.x;
-        }
-
-        public int getY() {
-            return this.y;
-        }
-    
-    }
 
     public class Walker {
 

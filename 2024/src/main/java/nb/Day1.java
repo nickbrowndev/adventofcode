@@ -14,7 +14,7 @@ public class Day1 {
     private List<Integer> rights;
 
     public Day1(String path) {
-        lines = new DataLoader().getLinesFromFileResource(path);
+        lines = DataLoader.getLinesFromFileResource(path);
 
         lefts = new ArrayList<>(lines.size());
         rights = new ArrayList<>(lines.size());

@@ -66,8 +66,8 @@ public class Day5 {
      */
     public Integer doPartTwo() {
 
-        //List<PageOrder> updatedOrders = new ArrayList<>(data.getIncorrectPageOrder().size());
-        
+        // Need the list of incorrect to be populated. Ideally would do this 
+        // together, but kept separate for cleanliness
         doPartOne();
 
         int total = 0;
@@ -78,7 +78,6 @@ public class Day5 {
 
                 if (brokenRule.isEmpty()) {
 
-                    //updatedOrders.add(pageOrder);
                     total += pageOrder.getMidPage();
                     System.out.println("Processed " + pageOrder.toString() + " total: " + total);
                     break;
@@ -201,7 +200,7 @@ public class Day5 {
             int prior = rule.priorPage();
             int after = rule.afterPage();
 
-            List<Integer> newOrder = new ArrayList(this.pageOrder().length);
+            List<Integer> newOrder = new ArrayList<>(this.pageOrder().length);
             for (int i = 0; i < this.pageOrder().length; i++ ) {
                 int value = this.pageOrder()[i];
 

@@ -2,4 +2,4 @@ plugins {
 }
 
 rootProject.name = 'adventofcode'
-include '2024'
+include('2024', 'util')
